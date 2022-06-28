@@ -1,0 +1,4 @@
+com\mycompany\klijent\resources\AddResources.class
+com\mycompany\klijent\resources\FetchResources.class
+com\mycompany\klijent\JAXRSConfiguration.class
+com\mycompany\klijent\resources\JavaEE8Resource.class

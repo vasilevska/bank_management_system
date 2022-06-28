@@ -1,0 +1,6 @@
+services\Service.class
+com\mycompany\server\resources\MainResource.class
+com\mycompany\server\resources\JavaEE8Resource.class
+services\Ps2IDs.class
+services\Ps1IDs.class
+com\mycompany\server\JAXRSConfiguration.class

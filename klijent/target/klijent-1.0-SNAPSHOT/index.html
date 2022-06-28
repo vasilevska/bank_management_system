@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    </head>
+<body>
+
+<div class = "container">
+    <div class = "row">
+        <div class = "col-sm-12">
+            <h1>IS Projekat</h1>
+        </div>
+    </div>
+    <div class = "row mt-5 mb-5 justify-content-around">
+        <div class = "col-sm-3 ml-5 mr-5">
+            <form id="fetch/mesta" method="get" action="app/test">
+                <div class="form-group card p-3 ml-5 mr-5">
+                    <button type="button" class="btn btn-primary" onclick="loadXMLDoc('app/fetch/mesta')">Dohvati mesta</button>
+                </div>
+                
+            </form>
+        </div>
+        <div class = "col-sm-3">
+            <form id="fetch/filijale" method="get" action="app/test" >
+                <div class="form-group card p-3 ml-5 mr-5">
+                    <button type="button" class="btn btn-primary" onclick="loadXMLDoc('app/fetch/filijale')">Dohvati filijale</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3">
+            <form id="fetch/komitenti" method="get" action="app/test">
+                <div class="form-group card p-3 ml-5 mr-5">
+                <button type="button" class="btn btn-primary"  onclick="loadXMLDoc('app/fetch/komitenti')">Dohvati komitente</button>
+                </div>
+            </form>    
+        </div>
+    </div>
+    <div class = "row mt-3 mb-5 justify-content-evenly">
+        <div class = "col-sm-3 ">
+            <form id="fetch/racuni" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                    <label>ID komitenta:</label> <input class="form-control" type="number" name="komitentId" required/> <br/>
+                    <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/fetch/racuni')">Dohvati racune</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3">
+            <form id="fetch/transakcije" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                    ID racuna: <input class="form-control" type="number" name="racunId" required/> <br/>
+                    <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/fetch/transakcije')">Dohvati transakcije</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <p id="demo" class="mb-5"></p>
+
+    <div class = "row mt-3 mt-5 mb-5 justify-content-evenly">
+        <div class = "col-sm-3 ">
+            <form id="add/mesto" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        Naziv: <input class="form-control" type="text" name="naziv" required/> <br/>
+                        Postanski broj: <input class="form-control" type="number" name="postanskiBr" required/> <br/>
+                
+                        <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/mesto')">Dodaj mesto</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/filijala" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        Naziv: <input class="form-control" type="text" name="naziv" required/> <br/>
+                        Adresa: <input class="form-control" type="text" name="adresa" required/> <br/>
+                        ID Mesta: <input class="form-control" type="number" name="mestoId" required/> <br/>
+
+                
+                    <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/filijala')">Dodaj filijalu</button>
+                </div>
+            </form>
+            
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/komitent" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        Naziv: <input class="form-control" type="text" name="naziv" required/> <br/>
+                        Adresa: <input class="form-control" type="text" name="adresa" required/> <br/>
+                        ID Mesta: <input class="form-control" type="number" name="mestoId" required/> <br/>
+
+                
+                <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/komitent')">Dodaj komitenta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+     <div class = "row mt-3 mb-5 justify-content-evenly">
+        <div class = "col-sm-3 ">
+            <form id="add/sediste" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID komitenta: <input class="form-control" type="number" name="komitentId" required/> <br/>
+                        Adresa: <input class="form-control" type="text" name="adresa" required/> <br/>
+                        <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/sediste')">Promeni sediste</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/racun" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID komitenta: <input class="form-control" type="number" name="komitentId" required/> <br/>
+                        ID mesta: <input class="form-control" type="number" name="mestoId" required/> <br/>
+                        Dozvoljeni minus: <input class="form-control" type="number" name="dozvMinus" required/> <br/>
+                        <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/racun')">Otvori racun</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/rracun" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID racuna: <input class="form-control" type="number" name="racunId" required/> <br/>
+                        <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/rracun')">Zatvori racun</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+     <div class = "row mt-3 mb-5 justify-content-evenly">
+        <div class = "col-sm-3 ">
+            <form id="add/prenos" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID racuna: <input class="form-control" type="number" name="racunId" required/> <br/>
+                        ID racuna primaoca: <input class="form-control" type="number" name="primalacId" required/> <br/>
+                        Iznos: <input class="form-control" type="number" name="iznos" required/> <br/>
+                        Svrha: <input class="form-control" type="text" name="svrha" required/> <br/>
+
+                
+                <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/prenos')">Pokreni prenos</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/uplata" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID racuna: <input class="form-control" type="number" name="racunId" required/> <br/>
+                        ID filijale: <input class="form-control" type="number" name="filijalaId" required/> <br/>
+                        Iznos: <input class="form-control" type="number" name="iznos" required/> <br/>
+                        Svrha: <input class="form-control" type="text" name="svrha" required/> <br/>
+
+                
+                <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/uplata')">Izvrsi uplatu</button>
+                </div>
+            </form>
+        </div>
+        <div class = "col-sm-3 ">
+            <form id="add/isplata" method="get" action="app/test" enctype="application/x-www-form-urlencoded">
+                <div class="form-group card p-3 ml-5 mr-5">
+                        ID racuna: <input class="form-control" type="number" name="racunId" required/> <br/>
+                        ID filijale: <input class="form-control" type="number" name="filijalaId" required/> <br/>
+                        Iznos: <input class="form-control" type="number" name="iznos" required/> <br/>
+                        Svrha: <input class="form-control" type="text" name="svrha" required/> <br/>
+                
+                <button type="button" class="btn btn-primary mt-3"  onclick="loadXMLDoc('app/add/isplata')">Izvrsi isplatu</button>  
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+function loadXMLDoc(endpoint) {
+   console.log(endpoint);
+   console.log(endpoint.substring(endpoint.indexOf("/")+1));
+   console.log(document.getElementById(endpoint.substring(endpoint.indexOf("/")+1)));
+   var data = new FormData(document.getElementById(endpoint.substring(endpoint.indexOf("/")+1)));
+   
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var x, i, xmlDoc, txt, xmlString;
+        xmlString = this.responseText;
+        
+        tag = xmlString.substring(2, xmlString.indexOf(">"));
+        
+        txt = "";
+        
+        
+        var str =  xmlString;
+        xmlString = "<tabela>" + xmlString + "</tabela>";
+        let parser = new DOMParser();
+        xmlDoc = parser.parseFromString(xmlString, "text/xml");
+        x = xmlDoc.getElementsByTagName(tag);
+        if(x.length > 0){
+            txt += "<table class=\"table\">";
+            txt += "<tr>";
+            let k = x[0].children;
+            for(j = 0; j< k.length; j++){
+                txt += "<th>";
+                txt += k[j].nodeName;
+                txt += "</th>";
+            }
+            txt += "</tr>";
+            for (i = 0; i< x.length; i++) {
+                txt += "<tr>";
+                let k = x[i].children;
+                let primalacId = 0;
+                for(j = 0; j< k.length; j++){
+                    if(k[j].nodeName == "prenos"){
+                        primalacId = (k[j].childNodes[0].nextSibling).children[5].innerHTML;
+                        continue;
+                    }
+                    if(k[j].nodeName == "uplataIsplata"){
+                        primalacId = String.fromCharCode(k[j].childNodes[3].innerHTML);
+                        continue;
+                    }
+                    txt += "<td>";
+                    if(k[j].childNodes[0].data == "\n        "){
+                        z = k[j].children;
+                        fName = k[j].nodeName;
+                        for(m = 0; m < z.length; m++){
+                            str = z[m].nodeName;
+                            if(str.includes(fName)){
+                                txt+= z[m].childNodes[0].data;
+                                break;
+                            }
+                            
+                        }
+                        //txt += k[j].childNodes[0].nextSibling.childNodes[0].data;
+                    }
+                    else txt += k[j].childNodes[0].data;
+                    
+                    txt += "</td>";
+                }
+                if(primalacId != 0){
+                    txt+= "<td>";
+                    txt += primalacId;
+                    txt += "</td>";
+                }
+              txt += "</tr>";
+            }
+            txt += "</table>";
+        }
+        else{
+            txt +="<div class=\"alert alert-secondary\" role=\"alert\">";
+            txt += str;
+            txt += "</div>"
+        }
+        
+        document.getElementById("demo").innerHTML = txt;
+    }
+  };
+  const params = new URLSearchParams(data).toString();
+  console.log(params);
+  xmlhttp.open("POST", endpoint, true);
+  xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xmlhttp.send(params);
+}
+
+
+
+
+</script>
+
+</body>
+</html>
